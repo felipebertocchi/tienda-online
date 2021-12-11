@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% load humanize %}
+
+{% block title %}Cloudshop | Store{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <div class="row justify-content-start">
+        {% for product in product_list %}
+        <div class='card mt-3 mx-2 px-0 col-8 col-md-2'>
+            <img src="{{product.image.url}}" class="card-img-top" alt="{{product.name}}">
+            <div class="card-body">
+                <h5 class="card-title">$ {{product.price|intcomma}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{product.name}}</h6>
+                <a href={% url 'cart:add-product' product.id %} class="btn btn-primary">Add to cart</a>
+                <button class="btn btn-outline-danger"><i class="far fa-heart"></i></button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

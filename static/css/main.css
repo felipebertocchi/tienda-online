@@ -1,0 +1,128 @@
+
+body {
+    background-color: azure;
+}
+
+.navbar {
+    background-color: darkslategrey;
+}
+
+.srch {
+    border-radius: 1.1rem;
+}
+
+button.srch {
+    margin-left: -50px;
+}
+
+input.srch {
+    width: 25rem;
+}
+
+#cart-icon {
+    font-size: 2.2rem;
+    color: white;
+}
+
+#cart-total {
+    vertical-align: top;
+    margin-left: -15px;
+    margin-top: -3px;
+    font-size: 0.65rem;
+}
+
+#cart-summary {
+    height: 300px;
+}
+
+.quantity-selector {
+    width: fit-content;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    /* Agregue estos estilos para permitir que el footer quede al fondo */
+    position: relative;
+    min-height: 100vh;
+}
+
+main {
+    /* Agregue estos estilos para permitir que el footer quede al fondo */
+    padding-bottom: 75px;
+}
+
+footer {
+    /* Agregue estos estilos para permitir que el footer quede al fondo */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+
+/* Footer */
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #1f1f1f;
+    padding: 15px 10px;
+}
+
+.powered {
+    display: flex;
+    align-items: flex-end;
+}
+
+.powered h6 {
+    color: gainsboro;
+}
+
+.powered h6 a {
+    color: gainsboro;
+}
+
+.links {
+    float: right;
+}
+
+.social-icons li {
+    display: inline-block;
+    font-size: 1.2rem;
+}
+
+.social-icons a {
+    background-color: #33353D;
+    color: gray;
+
+    display: inline-block;
+    line-height: 35px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    margin-right: 16px;
+    border-radius: 100%;
+    transition: all .2s linear
+}
+
+.social-icons a.facebook:hover {
+    transform: scale(1.1);
+    background-color: #3b5998;
+    color: white;
+}
+
+.social-icons a.instagram:hover {
+    transform: scale(1.1);
+    background-color: #E1548F;
+    color: white;
+}
+
+.social-icons a.twitter:hover {
+    transform: scale(1.1);
+    background-color: #00aced;
+    color: white;
+}
+
+/* Footer end */

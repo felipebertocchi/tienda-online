@@ -1,0 +1,56 @@
+{% extends 'main.html' %}
+{% load humanize %}
+
+{% block title %}Cloudshop | Cart{% endblock title %}
+
+{% block content %}
+<div class="container mt-3">
+    <h3>Cart</h3>
+    <div class="row">
+        {% if request.session.cart.items %}
+        <div class="col-8">
+            {% for item in request.session.cart.values %}
+            
+            <div class="card mb-3 p-0">
+                <div class="row g-0 align-items-center">
+                    <div class="col-xs-6 col-md-2">
+                        <img class="w-100" src={{item.image}} alt={{item.name}}>
+                    </div>
+                    <div class="col-md-3 mx-4">
+                        <h6 class="card-title">{{item.name}}</h6>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                    <div class="col">
+                        <h6>Quantity: </h6>
+                        <div class="quantity-selector border border-2 border-secondary rounded px-2 py-1">
+                            <a href={% url 'cart:substract-product' item.product_id %} class=""><i class="fas fa-minus fa-sm"></i></a>
+                            <span class="mx-3">{{item.quantity}}</span>
+                            <a href={% url 'cart:add-product' item.product_id %} class=""><i class="fas fa-plus fa-sm"></i></a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h6 class="mb-2">$ {{item.price|intcomma}}</h6>
+                    </div>
+                </div>
+            </div>
+            
+            {% endfor %}
+        </div>
+        
+        <div id="cart-summary" class="card mb-3 col-4 justify-content-around">
+            <h3>Total items in cart: {{total_items_cart}}</h3>
+            <h4>Total: $ {{total_amount_cart|intcomma}}</h4>
+            <a href={% url 'store:checkout' %} class="btn btn-success">Checkout</a>
+        </div>
+
+        {% else %}
+
+        <div class="alert alert-danger" role="alert">
+            No products have been added to the cart yet!
+        </div>
+
+        {% endif %}
+        
+    </div>
+</div>
+{% endblock content %}

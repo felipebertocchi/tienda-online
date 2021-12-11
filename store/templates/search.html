@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+
+{% block title %}Cloudshop | Search{% endblock title %}
+
+{% block content %}
+{% if search_results %}
+
+<div class="container mt-3">
+    <h3 class="my-3" >Search for <strong>"{{query}}"</strong> returned {{search_results|length}} results:</h3>
+    <div class="row justify-content-start">
+        {% for product in search_results %}
+        <div class='card mt-3 mx-2 px-0 col-8 col-md-2'>
+            <img src="{{product.image.url}}" class="card-img-top" alt="{{product.name}}">
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">${{product.price}}</h6>
+                <p class="card-text">{{product.description}}</p>
+                <a href="{% url 'cart:cart' %}" class="btn btn-primary">Add to cart</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% else %} 
+<div class="container mt-3">
+    <h3 class="my-3 mx-3" >Search for <strong>"{{query}}"</strong> returned no results</h3>
+</div>
+{% endif %}
+
+
+{% endblock content %}

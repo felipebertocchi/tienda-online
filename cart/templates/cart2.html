@@ -1,0 +1,56 @@
+{% extends 'main.html' %}
+{% load humanize %}
+
+{% block title %}Cloudshop | Cart{% endblock title %}
+
+{% block content %}
+<div class="container mt-3">
+    <h3>Cart</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if request.session.cart.items %}
+                {% for item in request.session.cart.values %}
+                    <tr class="text-center">
+                        <td>
+                            {{item.name}}
+                        </td>
+                        <td>
+                            {{item.quantity}}
+                            <a href={% url 'cart:add-product' item.product_id %} class="btn btn-sm btn-success">+</a>
+                            <a href={% url 'cart:substract-product' item.product_id %} class="btn btn-sm btn-success">-</a>
+                        </td>
+                        <td>
+                            $ {{item.price|intcomma}}
+                        </td>
+                    </tr>
+                {% endfor %}
+            
+            {% else %}
+                <tr>
+                    <td colspan="3">
+                        <div class="alert alert-danger" role="alert">
+                            No products have been added to the cart yet!
+                        </div>
+                    </td>
+                </tr>
+
+            {% endif %}
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-end pe-4">
+                    <h4>Total: ${{total_amount_cart|intcomma}}</h4>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+{% endblock content %}
